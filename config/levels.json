@@ -1,0 +1,70 @@
+{
+  "levels": [
+    {
+      "levelId": 1,
+      "name": "Beach",
+      "questionCount": 5,
+      "gargoyleCount": 12,
+      "pointsPerQuestion": 20,
+      "limitedLivesEnabled": true,
+      "bossEnabled": false
+    },
+    {
+      "levelId": 2,
+      "name": "Desert",
+      "questionCount": 5,
+      "gargoyleCount": 14,
+      "pointsPerQuestion": 20,
+      "limitedLivesEnabled": true,
+      "bossEnabled": false
+    },
+    {
+      "levelId": 3,
+      "name": "Forest",
+      "questionCount": 5,
+      "gargoyleCount": 16,
+      "pointsPerQuestion": 20,
+      "limitedLivesEnabled": true,
+      "bossEnabled": false
+    },
+    {
+      "levelId": 4,
+      "name": "Arctic",
+      "questionCount": 5,
+      "gargoyleCount": 18,
+      "pointsPerQuestion": 20,
+      "limitedLivesEnabled": true,
+      "bossEnabled": false
+    },
+    {
+      "levelId": 5,
+      "name": "Castle",
+      "questionCount": 5,
+      "gargoyleCount": 20,
+      "pointsPerQuestion": 20,
+      "limitedLivesEnabled": true,
+      "bossEnabled": true,
+      "boss": {
+        "requiredPrayerHits": 3,
+        "projectile": "paper_airplane"
+      }
+    }
+  ],
+  "questionRewards": {
+    "correctAnswerPrayers": 3
+  },
+  "hud": {
+    "showGrade": true,
+    "showPrayers": true,
+    "showLevel": true,
+    "showNextQuestion": true,
+    "showLives": true
+  },
+  "gradingScale": {
+    "A": [90, 100],
+    "B": [80, 89],
+    "C": [70, 79],
+    "D": [60, 69],
+    "F": [0, 59]
+  }
+}
