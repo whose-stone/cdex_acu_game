@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Time (ACU Classroom Game)</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #090b17;
+        --bg-accent: #121935;
+        --text: #f7f8ff;
+        --muted: #b7bfdd;
+        --gold: #ffd166;
+        --firebird-red: #ba0c2f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top, var(--bg-accent), var(--bg));
+        display: grid;
+        place-items: center;
+      }
+
+      main {
+        width: min(820px, 92vw);
+        border: 1px solid #27315f;
+        border-radius: 16px;
+        padding: 2rem;
+        background: rgba(5, 7, 15, 0.72);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 16px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      h1 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: clamp(1.5rem, 3vw, 2.3rem);
+        color: var(--gold);
+      }
+
+      p {
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .pill {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(186, 12, 47, 0.2);
+        border: 1px solid rgba(186, 12, 47, 0.55);
+        color: #ffc9d7;
+      }
+
+      ul {
+        padding-left: 1.25rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+        color: var(--text);
+      }
+
+      .links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.2rem;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid #4655a5;
+        border-radius: 10px;
+        padding: 0.55rem 0.85rem;
+        font-weight: 600;
+        transition: background 0.2s ease;
+      }
+
+      a:hover {
+        background: rgba(70, 85, 165, 0.28);
+      }
+
+      footer {
+        margin-top: 1.25rem;
+        font-size: 0.9rem;
+        color: #9cabdf;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="pill">Deployment-ready starter</span>
+      <h1>Final Time</h1>
+      <p>
+        This repository currently contains planning docs and game configuration. This landing page prevents
+        Vercel from returning a 404 while the full Next.js game is implemented.
+      </p>
+
+      <ul>
+        <li>Project concept and requirements: <code>README.md</code></li>
+        <li>Implementation breakdown: <code>docs/IMPLEMENTATION_PLAN.md</code></li>
+        <li>Firestore model guidance: <code>docs/FIREBASE_SCHEMA.md</code></li>
+        <li>Starter gameplay config: <code>config/levels.json</code></li>
+      </ul>
+
+      <div class="links">
+        <a href="./README.md">View README</a>
+        <a href="./docs/IMPLEMENTATION_PLAN.md">Implementation plan</a>
+        <a href="./docs/FIREBASE_SCHEMA.md">Firebase schema</a>
+        <a href="./config/levels.json">Level config</a>
+      </div>
+
+      <footer>
+        Next step: scaffold the Next.js app and migrate this page into <code>app/page.tsx</code>.
+      </footer>
+    </main>
+  </body>
+</html>
