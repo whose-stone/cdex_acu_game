@@ -1,4 +1,4 @@
-import config from "../config/levels.json";
+import rawConfig from "../config/levels.json";
 
 type BossConfig = {
   requiredPrayerHits: number;
@@ -20,7 +20,37 @@ type GameConfig = {
   levels: Level[];
 };
 
-const gameConfig: GameConfig = config;
+function isLevel(value: unknown): value is Level {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Record<string, unknown>;
+  return (
+    typeof candidate.levelId === "number" &&
+    typeof candidate.name === "string" &&
+    typeof candidate.questionCount === "number" &&
+    typeof candidate.gargoyleCount === "number" &&
+    typeof candidate.pointsPerQuestion === "number" &&
+    typeof candidate.limitedLivesEnabled === "boolean" &&
+    typeof candidate.bossEnabled === "boolean"
+  );
+}
+
+function parseGameConfig(value: unknown): GameConfig {
+  if (!value || typeof value !== "object") {
+    return { levels: [] };
+  }
+
+  const candidate = value as Record<string, unknown>;
+  const levels = Array.isArray(candidate.levels)
+    ? candidate.levels.filter(isLevel)
+    : [];
+
+  return { levels };
+}
+
+const gameConfig = parseGameConfig(rawConfig);
 
 export default function Home() {
   return (
@@ -37,7 +67,7 @@ export default function Home() {
         <ul>
           {gameConfig.levels.map((level) => (
             <li key={level.levelId}>
-              <strong>{level.name}</strong> — {level.gargoyleCount} gargoyles, {" "}
+              <strong>{level.name}</strong> — {level.gargoyleCount} gargoyles,{" "}
               {level.questionCount} questions
               {level.bossEnabled ? " (boss level)" : ""}
             </li>
