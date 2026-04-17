@@ -20,7 +20,7 @@ type GameConfig = {
   levels: Level[];
 };
 
-const gameConfig = config as GameConfig;
+const gameConfig: GameConfig = config;
 
 export default function Home() {
   return (
