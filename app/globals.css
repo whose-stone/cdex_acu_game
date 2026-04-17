@@ -87,3 +87,41 @@ a {
 a:hover {
   background: rgba(70, 85, 165, 0.28);
 }
+
+.hud {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+}
+
+.gameCanvas {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #0b1024;
+}
+
+.controls {
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 1px solid var(--link);
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(70, 85, 165, 0.2);
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(70, 85, 165, 0.4);
+}

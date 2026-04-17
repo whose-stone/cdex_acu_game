@@ -1,41 +1,25 @@
-import levels from "../config/levels.json";
+import Link from "next/link";
 
-type Level = {
-  id: number;
-  name: string;
-  environment: string;
-};
-
-const typedLevels = levels as Level[];
-
-export default function Home() {
+export default function LandingPage() {
   return (
     <main className="container">
-      <span className="badge">Vercel-ready Next.js app</span>
+      <span className="badge">Final Time — Slice A Entry</span>
       <h1>Final Time</h1>
       <p>
-        This project now deploys on Vercel as a real Next.js application instead
-        of a static fallback page.
+        This deployment follows the execution plan in <code>docs/IMPLEMENTATION_PLAN.md</code>.
+        Start from sign-in/character selection, then continue into playable slices.
       </p>
 
       <section>
-        <h2>Worlds from config</h2>
-        <ul>
-          {typedLevels.map((level) => (
-            <li key={level.id}>
-              <strong>{level.name}</strong> — {level.environment}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2>Project docs</h2>
+        <h2>Planned Route Shells</h2>
         <div className="links">
-          <a href="./README.md">README</a>
-          <a href="./docs/IMPLEMENTATION_PLAN.md">Implementation plan</a>
-          <a href="./docs/FIREBASE_SCHEMA.md">Firebase schema</a>
-          <a href="./config/levels.json">Level config</a>
+          <Link href="/character-select">Character Select</Link>
+          <Link href="/play/1">Play Level 1</Link>
+          <Link href="/results/1">Results Level 1</Link>
+          <Link href="/admin">Admin</Link>
+          <Link href="/admin/questions">Admin Questions</Link>
+          <Link href="/admin/players">Admin Players</Link>
+          <Link href="/admin/settings">Admin Settings</Link>
         </div>
       </section>
     </main>
