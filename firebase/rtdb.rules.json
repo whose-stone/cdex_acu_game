@@ -1,0 +1,73 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid && auth.token.email_verified === true && auth.token.email != null",
+        ".write": "auth != null && auth.uid === $uid && auth.token.email_verified === true && auth.token.email != null",
+        ".validate": "newData.hasChildren(['email','role'])",
+
+        "role": {
+          ".validate": "newData.isString() && (newData.val() === 'student' || newData.val() === 'admin')"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val() === auth.token.email"
+        }
+      }
+    },
+
+    "playerProfiles": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid && auth.token.email_verified === true",
+        ".write": "auth != null && auth.uid === $uid && auth.token.email_verified === true",
+
+        "selectedCharacter": {
+          ".validate": "newData.isString() && (newData.val() === 'firebird_boy' || newData.val() === 'firebird_girl')"
+        },
+        "currentLevel": {
+          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5"
+        },
+        "livesRemaining": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 99"
+        },
+        "prayers": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "currentGrade": {
+          ".validate": "newData.isString() && (newData.val() === 'A' || newData.val() === 'B' || newData.val() === 'C' || newData.val() === 'D' || newData.val() === 'F')"
+        }
+      }
+    },
+
+    "levels": {
+      ".read": "auth != null && auth.token.email_verified === true",
+      ".write": "auth != null && auth.token.email_verified === true && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+
+    "questions": {
+      ".read": "auth != null && auth.token.email_verified === true",
+      ".write": "auth != null && auth.token.email_verified === true && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+
+    "attempts": {
+      "$attemptId": {
+        ".read": "auth != null && (data.child('uid').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && newData.child('uid').val() === auth.uid && auth.token.email_verified === true"
+      }
+    },
+
+    "levelResults": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && auth.uid === $uid && auth.token.email_verified === true"
+      }
+    },
+
+    "admin": {
+      ".read": "auth != null && auth.token.email != null && auth.token.email.matches(/.*@gmail\\.com$/) && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      ".write": "auth != null && auth.token.email != null && auth.token.email.matches(/.*@gmail\\.com$/) && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    }
+  }
+}

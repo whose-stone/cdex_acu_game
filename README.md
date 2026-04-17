@@ -88,3 +88,5 @@ Admin users can:
 - `docs/IMPLEMENTATION_PLAN.md` — phased build plan and architecture.
 - `docs/FIREBASE_SCHEMA.md` — suggested Firestore model and security direction.
 - `config/levels.json` — starter level and gameplay configuration.
+- `firebase/rtdb.rules.json` — Firebase Realtime Database security rules (email-auth users + Gmail-gated admin subtree).
+- `docs/RTDB_RULES.md` — rule behavior and deployment notes.
